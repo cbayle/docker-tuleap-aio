@@ -10,7 +10,7 @@ MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
 RUN yum -y update; yum clean all
 
 RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
-RUN rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+RUN rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.$(uname -m).rpm
 ADD rpmforge.repo /etc/yum.repos.d/
 
 RUN yum install -y mysql-server; yum clean all
