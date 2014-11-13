@@ -4,14 +4,7 @@
 #FROM enalean/docker-tuleap-base:1.0
 FROM cbayle/docker-tuleap-base:latest
 
-MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
-
-# Update to last version
-RUN yum -y update; yum clean all
-
-RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
-RUN rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.$(uname -m).rpm
-ADD rpmforge.repo /etc/yum.repos.d/
+MAINTAINER Christian Bayle, cbayle@gmail.com
 
 RUN yum install -y mysql-server; yum clean all
 
