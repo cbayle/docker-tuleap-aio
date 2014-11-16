@@ -13,6 +13,14 @@ ADD repo-libs /repo-libs
 ADD Tuleap.repo /etc/yum.repos.d/
 ADD Tuleap-local.repo /etc/yum.repos.d/
 
+# Hack making so that when there is a local repo, it is used instead of network one
+RUN if [ -d "/repo/noarch" ] ; \
+   then \
+	sed -i '/enabled = 0/cenabled = 1' /etc/yum.repos.d/Tuleap-local.repo ;\
+   else \
+	sed -i '/enabled = 0/cenabled = 1' /etc/yum.repos.d/Tuleap.repo ;\
+   fi 
+
 RUN yum install -y \
 	tuleap-install \
 	tuleap-core-subversion \
@@ -22,9 +30,8 @@ RUN yum install -y \
 	tuleap-plugin-graphontrackers \
 	tuleap-customization-default \
 	tuleap-documentation \
-	restler-api-explorer \
-	; yum clean all
-	
+	restler-api-explorer ; \
+	yum clean all
 
 ###RUN /sbin/service sshd start && yum install -y --enablerepo=rpmforge-extras tuleap-plugin-git; yum clean all
 
