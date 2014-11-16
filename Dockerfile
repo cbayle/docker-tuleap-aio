@@ -16,9 +16,9 @@ ADD Tuleap-local.repo /etc/yum.repos.d/
 # Hack making so that when there is a local repo, it is used instead of network one
 RUN if [ -d "/repo/noarch" ] ; \
    then \
-	sed -i '/enabled = 0/cenabled = 1' /etc/yum.repos.d/Tuleap-local.repo ;\
+	sed -i '/enabled=0/cenabled=1' /etc/yum.repos.d/Tuleap-local.repo ;\
    else \
-	sed -i '/enabled = 0/cenabled = 1' /etc/yum.repos.d/Tuleap.repo ;\
+	sed -i '/enabled=0/cenabled=1' /etc/yum.repos.d/Tuleap.repo ;\
    fi 
 
 RUN yum install -y \
