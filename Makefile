@@ -26,8 +26,7 @@ repo/noarch:
 repo-libs/noarch:
 	[ -d $@ ] || mkdir $@
 
-emptyrepo:
-	rm -rf repo/* repo-libs/*
-	createrepo repo
-	createrepo repo-libs
+cleanrepo:
+	rm -rf repo/noarch repo/repodata repo-libs/noarch repo-libs/repodata
 	
+
