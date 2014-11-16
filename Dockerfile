@@ -6,9 +6,13 @@ FROM cbayle/docker-tuleap-base:latest
 
 MAINTAINER Christian Bayle, cbayle@gmail.com
 
-RUN yum install -y mysql-server; yum clean all
+RUN yum upgrade ;yum install -y mysql-server sudo rsyslog; yum clean all
 
+ADD repo /repo
+ADD repo-libs /repo-libs
 ADD Tuleap.repo /etc/yum.repos.d/
+ADD Tuleap-local.repo /etc/yum.repos.d/
+
 RUN yum install -y \
 	tuleap-install \
 	tuleap-core-subversion \
@@ -22,10 +26,7 @@ RUN yum install -y \
 	; yum clean all
 	
 
-RUN yum install -y sudo; yum clean all
-RUN /sbin/service sshd start && yum install -y --enablerepo=rpmforge-extras tuleap-plugin-git; yum clean all
-
-RUN yum install -y rsyslog; yum clean all
+###RUN /sbin/service sshd start && yum install -y --enablerepo=rpmforge-extras tuleap-plugin-git; yum clean all
 
 ADD supervisord.conf /etc/supervisord.conf
 

@@ -1,0 +1,13 @@
+[TuleapLocal]
+name=TuleapLocal
+#baseurl=http://ci.tuleap.net/yum/tuleap/rhel/6/dev/$basearch
+baseurl=file:///repo
+enabled=1
+gpgcheck=0
+
+[TuleapLocalLibs]
+name=TuleapLocalLibs
+#baseurl=http://ci.tuleap.net/yum/tuleap/rhel/6/dev/$basearch
+baseurl=file:///repo-libs
+enabled=1
+gpgcheck=0
