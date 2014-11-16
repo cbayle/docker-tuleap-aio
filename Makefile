@@ -14,11 +14,17 @@ run:
 		cbayle/docker-tuleap-aio \
 		/bin/bash
 
-copy:
+copy: repo/noarch repo-libs/noarch
 	cp ../rpms/RPMS/noarch/* repo/noarch/
 	createrepo repo
 	cp ../rpms-libs/RPMS/noarch/* repo-libs/noarch/
 	createrepo repo-libs
+
+repo/noarch:
+	[ -d $@ ] || mkdir $@
+
+repo-libs/noarch:
+	[ -d $@ ] || mkdir $@
 
 emptyrepo:
 	rm -rf repo/* repo-libs/*
