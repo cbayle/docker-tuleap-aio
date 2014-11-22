@@ -23,6 +23,7 @@ RUN if [ -d "/repo/noarch" ] ; \
 
 RUN yum install -y \
 	tuleap-install \
+	tuleap-all \
 	tuleap-core-subversion \
 	tuleap-plugin-agiledashboard \
 	tuleap-plugin-hudson \
