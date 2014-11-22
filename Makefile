@@ -15,11 +15,16 @@ run:
 		-p 4443:443 -p 8000:80 -p 2022:22 \
 		cbayle/docker-tuleap-aio $(CMD)
 
-copy: repo/noarch repo-libs/noarch repo-libs/i686
+copy: repo/noarch repo-libs/noarch repo-libs/i686 repo-libs/x86_64
 	cp ../rpms/RPMS/noarch/* repo/noarch/
 	createrepo repo
-	cp ../rpms-libs/RPMS/noarch/* repo-libs/noarch/
-	cp ../rpms-libs/RPMS/i686/* repo-libs/i686/
+	for arch in noarch i686 x86_64 ; \
+	do \
+		if [ -d ../rpms-libs/RPMS/$$arch ] ; \
+		then \
+			cp ../rpms-libs/RPMS/$$arch/* repo-libs/$$arch/ ; \
+		fi \
+	done
 	createrepo repo-libs
 
 repo/noarch:
@@ -29,6 +34,9 @@ repo-libs/noarch:
 	[ -d $@ ] || mkdir $@
 
 repo-libs/i686:
+	[ -d $@ ] || mkdir $@
+
+repo-libs/x86_64:
 	[ -d $@ ] || mkdir $@
 
 cleanrepo:
