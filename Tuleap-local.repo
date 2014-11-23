@@ -5,9 +5,3 @@ baseurl=file:///repo
 enabled=0
 gpgcheck=0
 
-[TuleapLocalLibs]
-name=TuleapLocalLibs
-#baseurl=http://ci.tuleap.net/yum/tuleap/rhel/6/dev/$basearch
-baseurl=file:///repo-libs
-enabled=0
-gpgcheck=0

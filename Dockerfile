@@ -9,7 +9,6 @@ MAINTAINER Christian Bayle, cbayle@gmail.com
 RUN yum upgrade ;yum install -y mysql-server sudo rsyslog; yum clean all
 
 ADD repo /repo
-ADD repo-libs /repo-libs
 ADD Tuleap.repo /etc/yum.repos.d/
 ADD Tuleap-local.repo /etc/yum.repos.d/
 
