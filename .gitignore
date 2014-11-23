@@ -1,6 +1,5 @@
 *~
 repo/noarch
 repo/repodata
-repo-libs/noarch
-repo-libs/repodata
-repo-libs/i686
+repo/i686
+repo/x86_64

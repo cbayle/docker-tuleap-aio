@@ -16,7 +16,6 @@ run:
 		cbayle/docker-tuleap-aio $(CMD)
 
 copy: repo/noarch repo/i686 repo/x86_64
-	cp ../rpms/RPMS/noarch/* repo/noarch/
 	for arch in noarch i686 x86_64 ; \
 	do \
 		if [ -d ../rpms/RPMS/$$arch ] ; \
